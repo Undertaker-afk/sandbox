@@ -77,6 +77,7 @@ export class Sandbox {
           "nextjs",
           "streamlit",
           "php",
+          "empty",
         ]
         const template = templateTypes.includes(this.type)
           ? `gitwit-${this.type}`
