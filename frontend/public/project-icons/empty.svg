@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600" fill="none" stroke="black" stroke-width="2">
+  <!-- Header Section -->
+  <rect x="0" y="0" width="800" height="50" fill="#f5f5f5" />
+  <text x="20" y="30" font-size="16" font-family="Arial, sans-serif" fill="black">Untitled - Code Editor</text>
+
+  <!-- File Tabs -->
+  <rect x="0" y="50" width="100" height="30" fill="#eaeaea" />
+  <text x="10" y="70" font-size="14" font-family="Arial, sans-serif" fill="black">file.js</text>
+  <rect x="100" y="50" width="100" height="30" fill="#cfcfcf" />
+  <text x="110" y="70" font-size="14" font-family="Arial, sans-serif" fill="black">index.html</text>
+
+  <!-- Code Area -->
+  <rect x="0" y="80" width="800" height="520" fill="#ffffff" />
+  <text x="20" y="120" font-size="14" font-family="Courier New, monospace" fill="gray">// Your code goes here</text>
+  <line x1="20" y1="140" x2="780" y2="140" />
+  <line x1="20" y1="160" x2="780" y2="160" />
+  <line x1="20" y1="180" x2="780" y2="180" />
+  <line x1="20" y1="200" x2="780" y2="200" />
+  <line x1="20" y1="220" x2="780" y2="220" />
+  <line x1="20" y1="240" x2="780" y2="240" />
+
+  <!-- Line Numbers -->
+  <rect x="0" y="80" width="50" height="520" fill="#f5f5f5" />
+  <text x="20" y="120" font-size="14" font-family="Arial, sans-serif" fill="black">1</text>
+  <text x="20" y="160" font-size="14" font-family="Arial, sans-serif" fill="black">2</text>
+  <text x="20" y="200" font-size="14" font-family="Arial, sans-serif" fill="black">3</text>
+  <text x="20" y="240" font-size="14" font-family="Arial, sans-serif" fill="black">4</text>
+  <text x="20" y="280" font-size="14" font-family="Arial, sans-serif" fill="black">5</text>
+</svg>
