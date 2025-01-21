@@ -286,5 +286,14 @@ export const templateConfigs: { [key: string]: TemplateConfig } = {
       build: "vite build",
       preview: "vite preview",
     },
+  }, 
+  empty: {
+    id: "empty",
+    name: "Empty Template",
+    runCommand: "",
+    fileStructure: {},
+    conventions: [],
+    dependencies: {},
+    scripts: {},
   },
 }
