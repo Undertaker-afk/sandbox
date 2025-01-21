@@ -74,4 +74,11 @@ export const projectTemplates: {
     icon: "/project-icons/php.svg",
     disabled: false,
   },
+  {
+    id: "empty",
+    name: "Empty Template",
+    description: "just an empty Template",
+    icon: "/project-icons/empty.svg",
+    disabled: false,
+  },
 ]
