@@ -567,6 +567,72 @@ export default {
       }
 
       return new Response("No reset needed", { status: 200 })
+    } else if (path === "/api/setup") {
+      if (method === "POST") {
+        const setupSchema = z.object({
+          projectId: z.string(),
+          projectType: z.string(),
+        })
+
+        const { projectId, projectType } = setupSchema.parse(request.body)
+
+        const setupScript = `
+          #!/bin/bash
+          wget sandbox.gitwit.dev/download/${projectId} -O setup.sh
+          bash ./setup.sh
+        `
+
+        const startScript = `
+          #!/bin/bash
+          npm install
+          npm run build
+          npm start
+        `
+
+        const devScript = `
+          #!/bin/bash
+          npm install
+          npm run dev
+        `
+
+        const cloudflareScript = `
+          #!/bin/bash
+          if [ -f /etc/os-release ]; then
+            . /etc/os-release
+            OS=$ID
+          else
+            OS=$(uname -s)
+          fi
+
+          case $OS in
+            ubuntu|debian)
+              sudo apt-get update
+              sudo apt-get install -y cloudflared
+              ;;
+            centos|fedora|rhel)
+              sudo yum install -y cloudflared
+              ;;
+            *)
+              echo "Unsupported OS: $OS"
+              exit 1
+              ;;
+          esac
+
+          npm install
+          npm run build
+          npm start
+          cloudflared tunnel --url http://localhost:3000
+        `
+
+        return json({
+          setupScript,
+          startScript,
+          devScript,
+          cloudflareScript,
+        })
+      } else {
+        return methodNotAllowed
+      }
     } else return notFound
   },
 }
