@@ -578,7 +578,7 @@ export default {
 
         const setupScript = `
           #!/bin/bash
-          wget sandbox.gitwit.dev/download/${projectId} -O setup.sh
+          wget ${process.env.SETUP_URL}/download/${projectId} -O setup.sh
           bash ./setup.sh
         `
 
