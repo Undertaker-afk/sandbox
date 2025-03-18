@@ -624,11 +624,97 @@ export default {
           cloudflared tunnel --url http://localhost:3000
         `
 
+        const pythonStartScript = `
+          #!/bin/bash
+          pip install -r requirements.txt
+          python main.py
+        `
+
+        const pythonDevScript = `
+          #!/bin/bash
+          pip install -r requirements.txt
+          python main.py
+        `
+
+        const pythonCloudflareScript = `
+          #!/bin/bash
+          if [ -f /etc/os-release ]; then
+            . /etc/os-release
+            OS=$ID
+          else
+            OS=$(uname -s)
+          fi
+
+          case $OS in
+            ubuntu|debian)
+              sudo apt-get update
+              sudo apt-get install -y cloudflared
+              ;;
+            centos|fedora|rhel)
+              sudo yum install -y cloudflared
+              ;;
+            *)
+              echo "Unsupported OS: $OS"
+              exit 1
+              ;;
+          esac
+
+          pip install -r requirements.txt
+          python main.py
+          cloudflared tunnel --url http://localhost:3000
+        `
+
+        const rubyStartScript = `
+          #!/bin/bash
+          bundle install
+          ruby main.rb
+        `
+
+        const rubyDevScript = `
+          #!/bin/bash
+          bundle install
+          ruby main.rb
+        `
+
+        const rubyCloudflareScript = `
+          #!/bin/bash
+          if [ -f /etc/os-release ]; then
+            . /etc/os-release
+            OS=$ID
+          else
+            OS=$(uname -s)
+          fi
+
+          case $OS in
+            ubuntu|debian)
+              sudo apt-get update
+              sudo apt-get install -y cloudflared
+              ;;
+            centos|fedora|rhel)
+              sudo yum install -y cloudflared
+              ;;
+            *)
+              echo "Unsupported OS: $OS"
+              exit 1
+              ;;
+          esac
+
+          bundle install
+          ruby main.rb
+          cloudflared tunnel --url http://localhost:3000
+        `
+
         return json({
           setupScript,
           startScript,
           devScript,
           cloudflareScript,
+          pythonStartScript,
+          pythonDevScript,
+          pythonCloudflareScript,
+          rubyStartScript,
+          rubyDevScript,
+          rubyCloudflareScript,
         })
       } else {
         return methodNotAllowed
