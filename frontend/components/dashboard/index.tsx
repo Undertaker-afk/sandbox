@@ -3,7 +3,7 @@
 import { Button } from "@/components/ui/button"
 import CustomButton from "@/components/ui/customButton"
 import { Sandbox } from "@/lib/types"
-import { Code2, FolderDot, HelpCircle, Plus, Users } from "lucide-react"
+import { Code2, FolderDot, HelpCircle, Plus, Users, Settings, Download } from "lucide-react"
 import { useRouter, useSearchParams } from "next/navigation"
 import { useEffect, useState } from "react"
 import { toast } from "sonner"
@@ -12,7 +12,7 @@ import NewProjectModal from "./newProject"
 import DashboardProjects from "./projects"
 import DashboardSharedWithMe from "./shared"
 
-type TScreen = "projects" | "shared" | "settings" | "search"
+type TScreen = "projects" | "shared" | "settings" | "search" | "setup"
 
 export default function Dashboard({
   sandboxes,
@@ -77,6 +77,14 @@ export default function Dashboard({
             >
               <FolderDot className="w-4 h-4 mr-2" />
               My Projects
+            </Button>
+            <Button
+              variant="ghost"
+              onClick={() => setScreen("setup")}
+              className={activeScreen("setup")}
+            >
+              <Download className="w-4 h-4 mr-2" />
+              Setup Project
             </Button>
             {/* <Button
               variant="ghost"
